@@ -11,12 +11,12 @@ public final class Schedulers {
 
     private Schedulers() {}
 
-    /** Returns the shared IO scheduler (cached thread pool). */
+    /** Returns the shared IO scheduler. */
     public static Scheduler io() {
         return IO;
     }
 
-    /** Returns the shared computation scheduler (fixed thread pool, N = CPU cores). */
+    /** Returns the shared computation scheduler. */
     public static Scheduler computation() {
         return COMPUTATION;
     }

@@ -21,8 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ObservableTest {
 
-    // Observer contract
-
     @Test
     void onNext_emitsAllItems() {
         List<Integer> result = new ArrayList<>();
@@ -74,8 +72,6 @@ class ObservableTest {
         assertInstanceOf(IllegalStateException.class, caught.get());
     }
 
-    // Disposable
-
     @Test
     void dispose_preventsSubsequentEmissions() {
         List<Integer> result = new ArrayList<>();
@@ -88,7 +84,6 @@ class ObservableTest {
 
         Disposable disposable = source.subscribe(item -> {
             result.add(item);
-            // dispose after first item — subsequent onNext calls are suppressed
         }, err -> {}, () -> {});
 
         disposable.dispose();
@@ -104,8 +99,6 @@ class ObservableTest {
         disposable.dispose();
         assertTrue(disposable.isDisposed());
     }
-
-    // map
 
     @Test
     void map_transformsItems() {
@@ -136,8 +129,6 @@ class ObservableTest {
         assertEquals("map error", caught.get().getMessage());
     }
 
-    // filter
-
     @Test
     void filter_keepsMatchingItems() {
         List<Integer> result = new ArrayList<>();
@@ -165,8 +156,6 @@ class ObservableTest {
         assertEquals("predicate error", caught.get().getMessage());
     }
 
-    // flatMap
-
     @Test
     void flatMap_forwardsError_fromInnerObservable() {
         AtomicReference<Throwable> caught = new AtomicReference<>();
@@ -182,8 +171,6 @@ class ObservableTest {
         assertEquals("inner error", caught.get().getMessage());
     }
 
-    // operator chaining
-
     @Test
     void mapAndFilter_chainedTogether() {
         List<String> result = new ArrayList<>();
@@ -197,8 +184,6 @@ class ObservableTest {
 
         assertEquals(List.of("odd-1", "odd-3", "odd-5"), result);
     }
-
-    // subscribeOn
 
     @Test
     void subscribeOn_runsSourceOnDifferentThread() throws InterruptedException {
@@ -234,8 +219,6 @@ class ObservableTest {
         assertTrue(latch.await(3, TimeUnit.SECONDS));
         assertTrue(threadName.get().startsWith("computation-"));
     }
-
-    // observeOn
 
     @Test
     void observeOn_deliversItemsOnSpecifiedThread() throws InterruptedException {
@@ -277,8 +260,6 @@ class ObservableTest {
         assertEquals("single", observeThread.get());
         assertNotEquals(subscribeThread.get(), observeThread.get());
     }
-
-    // error propagation through chain
 
     @Test
     void error_propagatesThroughMapAndFilter() {

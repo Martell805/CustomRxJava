@@ -10,10 +10,6 @@ import java.util.function.Predicate;
 /**
  * Represents a lazy, composable stream of items.
  *
- * <p>An Observable does not emit items until an {@link Observer} subscribes to it.
- * Operators such as {@link #map}, {@link #filter}, and {@link #flatMap} return new
- * Observable instances, forming an immutable chain.
- *
  * @param <T> the type of items emitted
  */
 public class Observable<T> {
@@ -97,8 +93,6 @@ public class Observable<T> {
         });
     }
 
-    // ── Operators ─────────────────────────────────────────────────────────────
-
     /**
      * Transforms each item emitted by this Observable by applying {@code mapper}.
      *
@@ -175,8 +169,6 @@ public class Observable<T> {
                     @Override public void onComplete()          { emitter.onComplete(); }
                 }));
     }
-
-    // ── Schedulers ────────────────────────────────────────────────────────────
 
     /**
      * Specifies the {@link Scheduler} on which the subscription (source emission) will run.

@@ -5,8 +5,6 @@ import java.util.concurrent.Executors;
 
 /**
  * Scheduler backed by a fixed thread pool sized to the number of available CPU cores.
- * Suitable for CPU-bound computation that should not be parallelised beyond core count.
- * Analogous to {@code Schedulers.computation()} in RxJava.
  */
 public class ComputationScheduler implements Scheduler {
 

@@ -5,8 +5,6 @@ import java.util.concurrent.Executors;
 
 /**
  * Scheduler backed by a cached thread pool.
- * Suitable for IO-bound work where threads spend most of their time waiting.
- * Analogous to {@code Schedulers.io()} in RxJava.
  */
 public class IOThreadScheduler implements Scheduler {
 

@@ -5,8 +5,6 @@ import java.util.concurrent.Executors;
 
 /**
  * Scheduler backed by a single dedicated thread.
- * Guarantees sequential execution of all tasks.
- * Analogous to {@code Schedulers.single()} in RxJava.
  */
 public class SingleThreadScheduler implements Scheduler {
 

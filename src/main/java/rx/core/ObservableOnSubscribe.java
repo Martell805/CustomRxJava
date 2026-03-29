@@ -2,7 +2,6 @@ package rx.core;
 
 /**
  * A function that subscribes an {@link Emitter} to a data source.
- * Passed to {@link Observable#create(ObservableOnSubscribe)}.
  *
  * @param <T> the type of items emitted
  */

@@ -1,7 +1,7 @@
 package rx.core;
 
 /**
- * Provides the emission API available inside {@link Observable#create(ObservableOnSubscribe)}.
+ * Provides the emission API.
  *
  * @param <T> the type of items to emit
  */
